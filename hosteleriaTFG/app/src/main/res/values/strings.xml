@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">hosteleriaTFG</string>
+    <string name="escanear_mesa">Escanear mesa</string>
 </resources>

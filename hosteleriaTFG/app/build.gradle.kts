@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation("com.journeyapps:zxing-android-embedded:4.2.0")
     implementation("com.squareup.okhttp3:logging-interceptor:3.10.0")
     implementation("com.squareup.okhttp3:okhttp:3.10.0")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")

@@ -2,8 +2,11 @@ package com.toni.hosteleriatfg.data.model
 
 data class Product(
     var id: Int? = null,
+    var id_restaurante: Int? = null,
     var nombre: String? = null,
-    var precio: Double? = null
+    var precio: Double? = null,
+    val categoria: Int,
+    val etiquetas: MutableList<Int>
 ) {
     override fun hashCode(): Int {
         return id?.hashCode() ?: 0
@@ -17,7 +20,9 @@ data class Product(
     }
 
     override fun toString(): String {
-        return "Product(id=$id, nombre=$nombre, precio=$precio)"
+        return "Product(id=$id, id_restaurante=$id_restaurante, nombre=$nombre, precio=$precio, categoria=$categoria, etiquetas=$etiquetas)"
     }
+
+
 }
 
