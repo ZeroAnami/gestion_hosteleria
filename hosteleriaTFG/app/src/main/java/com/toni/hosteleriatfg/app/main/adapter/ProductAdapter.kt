@@ -5,37 +5,24 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.toni.hosteleriatfg.R
-import com.toni.hosteleriatfg.app.main.adapter.`interface`.OnUserNameChangedListener
-import com.toni.hosteleriatfg.data.model.Conexion
-import com.toni.hosteleriatfg.data.model.User
+import com.toni.hosteleriatfg.data.model.Restaurant
 
-class UserAdapter(
-    private val userList: MutableList<User>,
+class ProductAdapter(
+    private val restaurant: Restaurant,
     private val fragmentManager: FragmentManager,
-    private val conexion:Conexion
-) : RecyclerView.Adapter<ViewHolderUser>(), OnUserNameChangedListener {
+) : RecyclerView.Adapter<ViewHolderProduct>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderUser {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderProduct {
         val view = LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.view_item_user, parent, false)
-        return ViewHolderUser(view, userList, fragmentManager, this) // Pasar el FragmentManager al ViewHolder
+            .inflate(R.layout.view_item_product, parent, false)
+        return ViewHolderProduct(view, fragmentManager) // Pasar el FragmentManager al ViewHolder
     }
 
-    override fun onBindViewHolder(holder: ViewHolderUser, position: Int) {
-        val item = userList[position]
+    override fun onBindViewHolder(holder: ViewHolderProduct, position: Int) {
+        val item = restaurant.productsList[position]
         holder.bind(item)
     }
 
-    override fun getItemCount() = userList.size
-
-    fun addItem(nombre: String) {
-        userList.add(0, User(null, conexion.id, nombre))
-        notifyItemInserted(0)
-    }
-
-    override fun onUserNameChanged(position: Int, newName: String) {
-        userList[position].nombre = newName
-        notifyItemChanged(position)
-    }
+    override fun getItemCount() = restaurant.productsList.size
 }

@@ -13,11 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.toni.hosteleriatfg.app.main.adapter.UserAdapter
 import com.toni.hosteleriatfg.app.main.adapter.ViewHolderUser
 import com.toni.hosteleriatfg.app.main.adapter.`interface`.OnUserNameChangedListener
+import com.toni.hosteleriatfg.data.model.Conexion
 import com.toni.hosteleriatfg.data.model.User
 import com.toni.hosteleriatfg.databinding.DialogUsersBinding
 
 class UsersDialog(
-    private var listUsers:MutableList<User>
+    private var conexion: Conexion
 ): DialogFragment() {
 
     private lateinit var binding: DialogUsersBinding
@@ -29,16 +30,15 @@ class UsersDialog(
 
         val builder = AlertDialog.Builder(requireActivity())
         builder.setView(binding.root)
-        adapter = UserAdapter(listUsers, parentFragmentManager)
+        adapter = UserAdapter(conexion.userList, parentFragmentManager, conexion)
         binding.rvListaUsuarios.adapter = adapter
         binding.rvListaUsuarios.layoutManager = LinearLayoutManager(context)
 
         binding.buttonMasUsuario.setOnClickListener {
-
             val dialog = PutUserNameDialog(
-                "",
-                onSubmitClickListener = {nombre ->
-                    adapter.addItem(nombre)
+                User(null,conexion.id,""),
+                onSubmitClickListener = {user ->
+                    adapter.addItem(user)
                 }
             ).show(parentFragmentManager,"dialog")
             binding.rvListaUsuarios.scrollToPosition(0)

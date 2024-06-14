@@ -6,44 +6,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".app.main.MainActivity">
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.366"
-            android:id="@+id/textViewIdProduct"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.502" app:layout_constraintVertical_bias="0.455"
-            android:id="@+id/textViewNameProduct"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" android:id="@+id/textViewPrice"
-            app:layout_constraintVertical_bias="0.547"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:layout_constraintTop_toBottomOf="@+id/buttonFilter"
+            android:layout_marginTop="110dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:listitem="@layout/view_item_product" android:id="@+id/rvListaProductos"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <Button
-            android:text="Button"
-            android:layout_width="80dp"
-            android:layout_height="80dp" android:id="@+id/buttonUsers"
+            android:text="Users"
+            android:layout_width="88dp"
+            android:layout_height="88dp" android:id="@+id/buttonUsers"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="16dp" android:layout_marginEnd="16dp"/>
     <Button
-            android:text="Button"
-            android:layout_width="80dp"
-            android:layout_height="80dp" android:id="@+id/buttonFilter"
+            android:text="Filter"
+            android:layout_width="88dp"
+            android:layout_height="88dp" android:id="@+id/buttonFilter"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"/>

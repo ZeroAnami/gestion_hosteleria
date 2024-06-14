@@ -93,7 +93,7 @@ object ServiceFactory {
 
     private fun getUrlServidor(context: Context?): String {
         val preferences = context?.getSharedPreferences("urlServidor",Context.MODE_PRIVATE)
-        return preferences?.getString("urlServidor", "http://5.225.1.194:40091/")?.let { return it }  ?: "http://5.225.1.194:40091/"
+        return preferences?.getString("urlServidor", "http://5.224.99.19:40091/")?.let { return it }  ?: "http://5.224.99.19:40091/"
     }
 
     /**

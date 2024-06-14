@@ -8,16 +8,11 @@ import com.toni.hosteleriatfg.data.model.Conexion
 import com.toni.hosteleriatfg.data.model.ResponseRest
 import io.reactivex.Observable
 
-class ConexionService(val context: Context) {
-    fun getConexionByID(id:Int): Observable<ResponseRest> {
+class RestauranteService(val context: Context) {
+    fun getRestauranteByID(id:Int): Observable<ResponseRest> {
         val gson = GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation()
             .create()
-        return ServiceFactory.getRetrofit(context, gson).create(HosteleriaTFGService::class.java).getConexionByID(id)
-    }
-
-    fun createConexion(conexion:Conexion): Observable<ResponseRest> {
-        val gson = GsonBuilder().serializeNulls().create()
-        return ServiceFactory.getRetrofit(context, gson).create(HosteleriaTFGService::class.java).createConexion(conexion)
+        return ServiceFactory.getRetrofit(context, gson).create(HosteleriaTFGService::class.java).getRestauranteByID(id)
     }
 }

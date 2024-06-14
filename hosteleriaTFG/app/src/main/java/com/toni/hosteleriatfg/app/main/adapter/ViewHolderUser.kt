@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.toni.hosteleriatfg.app.main.adapter.`interface`.OnUserNameChangedListener
 import com.toni.hosteleriatfg.app.main.dialog.PutUserNameDialog
 import com.toni.hosteleriatfg.data.model.User
-import com.toni.hosteleriatfg.databinding.ViewItemBinding
+import com.toni.hosteleriatfg.databinding.ViewItemUserBinding
 
 class ViewHolderUser(
     val view: View,
@@ -16,16 +16,16 @@ class ViewHolderUser(
     private val userNameChangedListener: OnUserNameChangedListener
 ) : RecyclerView.ViewHolder(view) {
 
-    private lateinit var binding: ViewItemBinding
+    private lateinit var binding: ViewItemUserBinding
 
     fun bind(item: User) {
-        binding = ViewItemBinding.bind(view)
+        binding = ViewItemUserBinding.bind(view)
         binding.textUserName.text = item.nombre
         binding.ccViewItemUser.setOnClickListener {
             val dialog = PutUserNameDialog(
-                item.nombre,
-                onSubmitClickListener = { nombre ->
-                    userNameChangedListener.onUserNameChanged(userList.indexOf(item), nombre)
+                item,
+                onSubmitClickListener = { user ->
+                    userNameChangedListener.onUserNameChanged(userList.indexOf(item), user)
                 }
             ).show(fragmentManager, "dialog")
         }

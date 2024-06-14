@@ -5,8 +5,8 @@ data class Product(
     var id_restaurante: Int? = null,
     var nombre: String? = null,
     var precio: Double? = null,
-    val categoria: Int,
-    val etiquetas: MutableList<Int>
+    val categoria: Int? = null,
+    val etiquetas: MutableList<Int> = mutableListOf()
 ) {
     override fun hashCode(): Int {
         return id?.hashCode() ?: 0

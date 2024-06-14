@@ -1,9 +1,11 @@
 package com.toni.hosteleriatfg.data.model
 
+import java.io.Serializable
+
 data class OrderItem(
-    val id: Int,
-    val id_order: Int,
-    val producto: Int, //Id del producto
-    val cantidad: Int,
-    val users: List<Int> //Ids de los usuarios
-)
+    val id: Int? = null,
+    val id_order: Int? = null,
+    val producto: Int? = null, //Id del producto
+    val cantidad: Int? = null,
+    val users: List<Int> = mutableListOf() //Ids de los usuarios
+) : Serializable
