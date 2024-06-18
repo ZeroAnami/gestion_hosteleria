@@ -27,7 +27,7 @@ class ViewHolderProduct(
     fun bind(item: Product) {
         binding = ViewItemProductBinding.bind(view)
         binding.textProductName.text = item.nombre
-        binding.textProductPrice.text = (item.precio.toString()+SIMBOLO_MONEDA).replace(".",",")
+        binding.textProductPrice.text = (String.format("%.2f", item.precio)+SIMBOLO_MONEDA).replace(".",",")
         binding.ccViewItemProduct.setOnClickListener {
             val dialog = AddOrderItemDialog(
                 conexion,

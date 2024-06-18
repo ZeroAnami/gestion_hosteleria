@@ -1,6 +1,7 @@
 package com.toni.hosteleriatfg.app.main
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import com.toni.hosteleriatfg.app.pedidos.PedidosActivity
 import com.toni.hosteleriatfg.app.main.adapter.CategoriaAdapter
 import com.toni.hosteleriatfg.app.main.adapter.EtiquetasFilterAdapter
 import com.toni.hosteleriatfg.app.main.adapter.ProductAdapter
@@ -34,6 +36,7 @@ class MainActivity() : AppCompatActivity() {
     private var listaProductosMostrados: MutableList<Product> = mutableListOf()
     private var microPedidos: MutableList<OrderItem> = mutableListOf()
     private lateinit var etiquetasListMarcadas: MutableList<Boolean>
+    private val REQUEST_CODE = 40091
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +64,33 @@ class MainActivity() : AppCompatActivity() {
             else
                 binding.ccPrueba.visibility = View.GONE
         }
+
+        binding.buttonVerPedido.setOnClickListener {
+            val intent = Intent(this, PedidosActivity::class.java)
+            with(intent){
+                putExtra("conexion", conexion)
+                putExtra("orders_items", OrderItemInstance(orderItemList = microPedidos))
+                putExtra("restaurante", restaurante)
+            }
+
+            startActivityForResult(intent, REQUEST_CODE)
+        }
+
         binding.ccPrueba.visibility = View.GONE
+        UsersDialog(conexion!!).show(supportFragmentManager, "dialog")
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            val conexionAdquirida = data?.getSerializableExtra("conexion") as? Conexion
+            val orderItemInstanceAdquirido = data?.getSerializableExtra("orders_items_devuelto") as? OrderItemInstance
+            if(orderItemInstanceAdquirido != null && conexionAdquirida != null){
+                microPedidos.clear()
+                microPedidos.addAll(orderItemInstanceAdquirido.orderItemList)
+                conexion = conexionAdquirida
+            }
+        }
     }
 
     @SuppressLint("MissingSuperCall")

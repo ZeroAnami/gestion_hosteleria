@@ -20,4 +20,16 @@ class ConexionService(val context: Context) {
         val gson = GsonBuilder().serializeNulls().create()
         return ServiceFactory.getRetrofit(context, gson).create(HosteleriaTFGService::class.java).createConexion(conexion)
     }
+
+    fun updateConexion(conexion:Conexion): Observable<ResponseRest> {
+        val gson = GsonBuilder().serializeNulls().create()
+        return ServiceFactory.getRetrofit(context, gson).create(HosteleriaTFGService::class.java).updateConexion(conexion)
+    }
+
+    fun finalizarPedido(id:Int): Observable<ResponseRest> {
+        val gson = GsonBuilder()
+            .excludeFieldsWithoutExposeAnnotation()
+            .create()
+        return ServiceFactory.getRetrofit(context, gson).create(HosteleriaTFGService::class.java).finalizarPedido(id)
+    }
 }

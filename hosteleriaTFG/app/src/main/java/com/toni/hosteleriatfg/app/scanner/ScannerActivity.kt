@@ -121,13 +121,11 @@ class ScannerActivity : AppCompatActivity() {
 
             } else {
                 Toast.makeText(this@ScannerActivity, "Error conectar con el servidor", Toast.LENGTH_LONG).show()
-                startScan()
             }
         }
 
         override fun onError(e: Throwable) {
             Toast.makeText(this@ScannerActivity, "Error conectar con el servidor", Toast.LENGTH_LONG).show()
-            startScan()
         }
     }
 }

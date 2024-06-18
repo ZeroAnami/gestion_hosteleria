@@ -8,4 +8,4 @@ data class Restaurant(
     val productsList: MutableList<Product> = mutableListOf(),
     val categoriasList: MutableList<Categoria> = mutableListOf(),
     val etiquetas: MutableList<Etiqueta> = mutableListOf()
-)
+) : Serializable
