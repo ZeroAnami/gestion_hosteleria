@@ -1,35 +1,22 @@
 package com.toni.hosteleriatfg.app.main.dialog
 
 import android.app.Dialog
-import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
-import com.toni.hosteleriatfg.app.main.MainActivity
-import com.toni.hosteleriatfg.app.main.adapter.UserAdapter
-import com.toni.hosteleriatfg.app.main.adapter.ViewHolderUser
 import com.toni.hosteleriatfg.data.ServiceFactory
-import com.toni.hosteleriatfg.data.model.Conexion
 import com.toni.hosteleriatfg.data.model.ResponseRest
 import com.toni.hosteleriatfg.data.model.User
-import com.toni.hosteleriatfg.data.service.ConexionService
-import com.toni.hosteleriatfg.data.service.RestauranteService
 import com.toni.hosteleriatfg.data.service.UserService
 import com.toni.hosteleriatfg.databinding.DialogPutUsersNameBinding
-import com.toni.hosteleriatfg.databinding.DialogUsersBinding
 import com.toni.hosteleriatfg.util.STATUS_OK
 import com.toni.hosteleriatfg.util.STATUS_OK_REGISTRO_CREADO
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
-import kotlin.properties.Delegates
 
 class PutUserNameDialog(
     val user: User,
@@ -47,12 +34,14 @@ class PutUserNameDialog(
         val builder = AlertDialog.Builder(requireActivity())
         builder.setView(binding.root)
 
+        binding.textInputUserEditor.setText(user.nombre)
+
         binding.buttonMasUsuarioNombre.setOnClickListener {
             user.nombre = binding.textInputUserEditor.text.toString()
-            if(user.id != null){
-                ServiceFactory.configureSubscriber(UserService(requireContext()).modifyUser(user), UserObserver())
+            if(user.id == null){
+                ServiceFactory.configureSubscriber(UserService(it.context).createUser(user), UserObserver())
             } else {
-                ServiceFactory.configureSubscriber(UserService(requireContext()).createUser(user), UserObserver())
+                ServiceFactory.configureSubscriber(UserService(it.context).modifyUser(user), UserObserver())
             }
 
             onSubmitClickListener.invoke(user)

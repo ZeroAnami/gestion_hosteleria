@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   tools:background="@color/black">
+
+    <com.google.android.material.card.MaterialCardView
+            android:id="@+id/ccTripForSelect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            android:background="?attr/colorOnPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="520dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" app:layout_constraintTop_toBottomOf="@+id/textViewProducto"
+                    android:id="@+id/constraint_rv_lista_usuarios_for_select" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="130dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:listitem="@layout/view_item_user_for_select"
+                        android:id="@+id/rv_lista_usuarios_for_select"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <Switch
+                    android:text="Compartir"
+                    android:layout_width="116dp"
+                    android:layout_height="53dp" android:id="@+id/switchCompartir"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="14dp"/>
+            <TextView
+                    android:text="TextView"
+                    android:textSize="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textViewProducto"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonMasCompartir" android:layout_marginTop="10dp"/>
+            <Button
+                    android:text="-"
+                    android:layout_width="32dp"
+                    android:layout_height="35dp" android:id="@+id/buttonSubtract"
+                    app:iconPadding="0dp"
+                    android:paddingLeft="0dp" android:paddingTop="0dp" android:paddingBottom="0dp"
+                    android:paddingRight="0dp" app:circularflow_radiusInDP="2dp"
+                    android:background="@drawable/rounded_left_corners" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="24dp"
+                    android:layout_marginStart="10dp"/>
+            <Button
+                    android:text="+"
+                    android:layout_width="32dp"
+                    android:layout_height="35dp" android:id="@+id/buttonPlus"
+                    app:iconPadding="0dp"
+                    android:paddingLeft="0dp" android:paddingTop="0dp" android:paddingBottom="0dp"
+                    android:paddingRight="0dp" app:circularflow_radiusInDP="2dp"
+                    android:background="@drawable/rounded_right_corners"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="24dp"
+                    app:layout_constraintStart_toEndOf="@+id/constraintLayoutUnidades"/>
+            <Button
+                    android:text="Añadir"
+                    android:layout_width="80dp"
+                    android:layout_height="42dp" android:id="@+id/buttonMasCompartir"
+                    app:iconPadding="0dp"
+                    android:paddingLeft="0dp" android:paddingTop="0dp" android:paddingBottom="0dp"
+                    android:paddingRight="0dp" app:circularflow_radiusInDP="2dp"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp" app:layout_constraintStart_toEndOf="@+id/buttonSubtract"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="24dp"
+                    android:id="@+id/constraintLayoutUnidades">
+
+                <TextView
+                        android:text="1"
+                        android:textSize="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textViewUnidades"
+                        app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

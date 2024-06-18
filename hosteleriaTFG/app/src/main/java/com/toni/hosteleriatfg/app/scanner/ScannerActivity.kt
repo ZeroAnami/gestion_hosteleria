@@ -63,7 +63,6 @@ class ScannerActivity : AppCompatActivity() {
             idMesa = qrText.split(';')[1]
         } catch (e:Exception){
             Toast.makeText(this@ScannerActivity, "El QR no es correcto", Toast.LENGTH_LONG).show()
-            startScan()
             return
         }
 

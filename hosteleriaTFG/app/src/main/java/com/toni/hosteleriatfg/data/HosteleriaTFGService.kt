@@ -26,7 +26,7 @@ interface HosteleriaTFGService {
     @POST("restTFG/api/users")
     fun createUser(@Body user: User): Observable<ResponseRest>
 
-    @POST("restTFG/api/users")
+    @PUT("restTFG/api/users")
     fun modifyUser(@Body user: User): Observable<ResponseRest>
 
 }

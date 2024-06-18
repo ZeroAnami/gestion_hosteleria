@@ -1,7 +1,9 @@
 package com.toni.hosteleriatfg.data.model
 
-class User(
+import java.io.Serializable
+
+data class User(
     var id: Int? = null,
-    var id_conexion: Int? = null,
+    var idConexion: Int? = null,
     var nombre: String? = null
-)
+) : Serializable

@@ -31,10 +31,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".app.pedidos.PedidosActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
             android:name=".app.main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"

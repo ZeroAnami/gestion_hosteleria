@@ -15,7 +15,7 @@ class UserService(val context: Context) {
         return ServiceFactory.getRetrofit(context, gson).create(HosteleriaTFGService::class.java).modifyUser(user)
     }
 
-    fun createUser(user:User): Observable<ResponseRest> {
+    fun createUser(user: User): Observable<ResponseRest> {
         val gson = GsonBuilder().serializeNulls().create()
         return ServiceFactory.getRetrofit(context, gson).create(HosteleriaTFGService::class.java).createUser(user)
     }
